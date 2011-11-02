@@ -1,4 +1,4 @@
-define('jquery.core', function() {
+define('jquery/core', function() {
 
 // Define a local copy of jQuery
 var jQuery = function( selector, context ) {
