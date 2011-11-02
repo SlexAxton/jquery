@@ -1,0 +1,1 @@
+define('jquery/util/trim', String.prototype.trim);

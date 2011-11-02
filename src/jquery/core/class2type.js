@@ -1,0 +1,1 @@
+define('jquery/core/class2type',{});

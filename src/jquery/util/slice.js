@@ -1,0 +1,1 @@
+define('jquery/util/slice', Array.prototype.slice);

@@ -1,0 +1,1 @@
+define('jquery/util/toString', Object.prototype.toString);

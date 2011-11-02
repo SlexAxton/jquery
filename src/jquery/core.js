@@ -63,18 +63,7 @@ var jQuery = function( selector, context ) {
 	readyList,
 
 	// The ready event handler
-	DOMContentLoaded,
-
-	// Save a reference to some core methods
-	toString = Object.prototype.toString,
-	hasOwn = Object.prototype.hasOwnProperty,
-	push = Array.prototype.push,
-	slice = Array.prototype.slice,
-	trim = String.prototype.trim,
-	indexOf = Array.prototype.indexOf,
-
-	// [[Class]] -> type pairs
-	class2type = {};
+	DOMContentLoaded;
 
 jQuery.fn = jQuery.prototype = {
 	constructor: jQuery,
@@ -197,54 +186,9 @@ jQuery.fn = jQuery.prototype = {
 	// The default length of a jQuery object is 0
 	length: 0,
 
-	// The number of elements contained in the matched element set
-	size: function() {
-		return this.length;
-	},
 
-	toArray: function() {
-		return slice.call( this, 0 );
-	},
 
-	// Get the Nth element in the matched element set OR
-	// Get the whole matched element set as a clean array
-	get: function( num ) {
-		return num == null ?
 
-			// Return a 'clean' array
-			this.toArray() :
-
-			// Return just the object
-			( num < 0 ? this[ this.length + num ] : this[ num ] );
-	},
-
-	// Take an array of elements and push it onto the stack
-	// (returning the new matched element set)
-	pushStack: function( elems, name, selector ) {
-		// Build a new jQuery matched element set
-		var ret = this.constructor();
-
-		if ( jQuery.isArray( elems ) ) {
-			push.apply( ret, elems );
-
-		} else {
-			jQuery.merge( ret, elems );
-		}
-
-		// Add the old object onto the stack (as a reference)
-		ret.prevObject = this;
-
-		ret.context = this.context;
-
-		if ( name === "find" ) {
-			ret.selector = this.selector + ( this.selector ? " " : "" ) + selector;
-		} else if ( name ) {
-			ret.selector = this.selector + "." + name + "(" + selector + ")";
-		}
-
-		// Return the newly-formed element set
-		return ret;
-	},
 
 	// Execute a callback for every element in the matched set.
 	// (You can seed the arguments with an array of args, but this is
@@ -474,9 +418,7 @@ jQuery.extend({
 		return jQuery.type(obj) === "function";
 	},
 
-	isArray: Array.isArray || function( obj ) {
-		return jQuery.type(obj) === "array";
-	},
+
 
 	// A crude way of determining if an object is a window
 	isWindow: function( obj ) {
@@ -487,11 +429,7 @@ jQuery.extend({
 		return obj != null && rdigit.test( obj ) && !isNaN( obj );
 	},
 
-	type: function( obj ) {
-		return obj == null ?
-			String( obj ) :
-			class2type[ toString.call(obj) ] || "object";
-	},
+
 
 	isPlainObject: function( obj ) {
 		// Must be an Object.
@@ -704,74 +642,9 @@ jQuery.extend({
 		return -1;
 	},
 
-	merge: function( first, second ) {
-		var i = first.length,
-			j = 0;
 
-		if ( typeof second.length === "number" ) {
-			for ( var l = second.length; j < l; j++ ) {
-				first[ i++ ] = second[ j ];
-			}
 
-		} else {
-			while ( second[j] !== undefined ) {
-				first[ i++ ] = second[ j++ ];
-			}
-		}
 
-		first.length = i;
-
-		return first;
-	},
-
-	grep: function( elems, callback, inv ) {
-		var ret = [], retVal;
-		inv = !!inv;
-
-		// Go through the array, only saving the items
-		// that pass the validator function
-		for ( var i = 0, length = elems.length; i < length; i++ ) {
-			retVal = !!callback( elems[ i ], i );
-			if ( inv !== retVal ) {
-				ret.push( elems[ i ] );
-			}
-		}
-
-		return ret;
-	},
-
-	// arg is for internal usage only
-	map: function( elems, callback, arg ) {
-		var value, key, ret = [],
-			i = 0,
-			length = elems.length,
-			// jquery objects are treated as arrays
-			isArray = elems instanceof jQuery || length !== undefined && typeof length === "number" && ( ( length > 0 && elems[ 0 ] && elems[ length -1 ] ) || length === 0 || jQuery.isArray( elems ) ) ;
-
-		// Go through the array, translating each of the items to their
-		if ( isArray ) {
-			for ( ; i < length; i++ ) {
-				value = callback( elems[ i ], i, arg );
-
-				if ( value != null ) {
-					ret[ ret.length ] = value;
-				}
-			}
-
-		// Go through every key on the object,
-		} else {
-			for ( key in elems ) {
-				value = callback( elems[ key ], key, arg );
-
-				if ( value != null ) {
-					ret[ ret.length ] = value;
-				}
-			}
-		}
-
-		// Flatten any nested arrays
-		return ret.concat.apply( [], ret );
-	},
 
 	// A global GUID counter for objects
 	guid: 1,

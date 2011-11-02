@@ -1,0 +1,1 @@
+define('jquery/util/indexOf', Array.prototype.indexOf);

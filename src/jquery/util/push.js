@@ -1,0 +1,1 @@
+define('jquery/util/push', Array.prototype.push);
