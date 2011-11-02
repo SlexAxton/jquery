@@ -1,4 +1,4 @@
-(function( jQuery ) {
+define('jquery/callbacks', ['jquery/core', 'jquery/core/type'], function( jQuery ) {
 
 // String to Object flags format cache
 var flagsCache = {};
@@ -36,7 +36,7 @@ function createFlags( flags ) {
  *	stopOnFalse:	interrupt callings when a callback returns false
  *
  */
-jQuery.Callbacks = function( flags ) {
+return jQuery.Callbacks = function( flags ) {
 
 	// Convert flags from String-formatted to Object-formatted
 	// (we check in cache first)
@@ -223,4 +223,4 @@ jQuery.Callbacks = function( flags ) {
 	return self;
 };
 
-})( jQuery );
+});

@@ -4,16 +4,16 @@ define('jquery/core', function() {
 var jQuery = function( selector, context ) {
 		// The jQuery object is actually just the init constructor 'enhanced'
 		return new jQuery.fn.init( selector, context, rootjQuery );
-	},
+	};
 
 	// Map over jQuery in case of overwrite
-	_jQuery = window.jQuery,
+	jQuery._jQuery = window.jQuery;
 
 	// Map over the $ in case of overwrite
-	_$ = window.$,
+	jQuery._$ = window.$;
 
 	// A central reference to the root jQuery(document)
-	rootjQuery,
+var rootjQuery,
 
 	// A simple way to check for HTML strings or ID strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
@@ -58,9 +58,6 @@ var jQuery = function( selector, context ) {
 
 	// For matching the engine and version of the browser
 	browserMatch,
-
-	// The deferred used on DOM ready
-	readyList,
 
 	// The ready event handler
 	DOMContentLoaded;
@@ -184,63 +181,7 @@ jQuery.fn = jQuery.prototype = {
 	jquery: "@VERSION",
 
 	// The default length of a jQuery object is 0
-	length: 0,
-
-
-
-
-
-	// Execute a callback for every element in the matched set.
-	// (You can seed the arguments with an array of args, but this is
-	// only used internally.)
-	each: function( callback, args ) {
-		return jQuery.each( this, callback, args );
-	},
-
-	ready: function( fn ) {
-		// Attach the listeners
-		jQuery.bindReady();
-
-		// Add the callback
-		readyList.add( fn );
-
-		return this;
-	},
-
-	eq: function( i ) {
-		return i === -1 ?
-			this.slice( i ) :
-			this.slice( i, +i + 1 );
-	},
-
-	first: function() {
-		return this.eq( 0 );
-	},
-
-	last: function() {
-		return this.eq( -1 );
-	},
-
-	slice: function() {
-		return this.pushStack( slice.apply( this, arguments ),
-			"slice", slice.call(arguments).join(",") );
-	},
-
-	map: function( callback ) {
-		return this.pushStack( jQuery.map(this, function( elem, i ) {
-			return callback.call( elem, i, elem );
-		}));
-	},
-
-	end: function() {
-		return this.prevObject || this.constructor(null);
-	},
-
-	// For internal use only.
-	// Behaves like an Array's method, not like a jQuery method.
-	push: push,
-	sort: [].sort,
-	splice: [].splice
+	length: 0
 };
 
 // Give the init function the jQuery prototype for later instantiation
@@ -311,112 +252,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 };
 
 jQuery.extend({
-	noConflict: function( deep ) {
-		if ( window.$ === jQuery ) {
-			window.$ = _$;
-		}
 
-		if ( deep && window.jQuery === jQuery ) {
-			window.jQuery = _jQuery;
-		}
-
-		return jQuery;
-	},
-
-	// Is the DOM ready to be used? Set to true once it occurs.
-	isReady: false,
-
-	// A counter to track how many items to wait for before
-	// the ready event fires. See #6781
-	readyWait: 1,
-
-	// Hold (or release) the ready event
-	holdReady: function( hold ) {
-		if ( hold ) {
-			jQuery.readyWait++;
-		} else {
-			jQuery.ready( true );
-		}
-	},
-
-	// Handle when the DOM is ready
-	ready: function( wait ) {
-		// Either a released hold or an DOMready/load event and not yet ready
-		if ( (wait === true && !--jQuery.readyWait) || (wait !== true && !jQuery.isReady) ) {
-			// Make sure body exists, at least, in case IE gets a little overzealous (ticket #5443).
-			if ( !document.body ) {
-				return setTimeout( jQuery.ready, 1 );
-			}
-
-			// Remember that the DOM is ready
-			jQuery.isReady = true;
-
-			// If a normal DOM Ready event fired, decrement, and wait if need be
-			if ( wait !== true && --jQuery.readyWait > 0 ) {
-				return;
-			}
-
-			// If there are functions bound, to execute
-			readyList.fireWith( document, [ jQuery ] );
-
-			// Trigger any bound ready events
-			if ( jQuery.fn.trigger ) {
-				jQuery( document ).trigger( "ready" ).unbind( "ready" );
-			}
-		}
-	},
-
-	bindReady: function() {
-		if ( readyList ) {
-			return;
-		}
-
-		readyList = jQuery.Callbacks( "once memory" );
-
-		// Catch cases where $(document).ready() is called after the
-		// browser event has already occurred.
-		if ( document.readyState === "complete" ) {
-			// Handle it asynchronously to allow scripts the opportunity to delay ready
-			return setTimeout( jQuery.ready, 1 );
-		}
-
-		// Mozilla, Opera and webkit nightlies currently support this event
-		if ( document.addEventListener ) {
-			// Use the handy event callback
-			document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
-
-			// A fallback to window.onload, that will always work
-			window.addEventListener( "load", jQuery.ready, false );
-
-		// If IE event model is used
-		} else if ( document.attachEvent ) {
-			// ensure firing before onload,
-			// maybe late but safe also for iframes
-			document.attachEvent( "onreadystatechange", DOMContentLoaded );
-
-			// A fallback to window.onload, that will always work
-			window.attachEvent( "onload", jQuery.ready );
-
-			// If IE and not a frame
-			// continually check to see if the document is ready
-			var toplevel = false;
-
-			try {
-				toplevel = window.frameElement == null;
-			} catch(e) {}
-
-			if ( document.documentElement.doScroll && toplevel ) {
-				doScrollCheck();
-			}
-		}
-	},
-
-	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
-	// aren't supported. They return false on IE (#2968).
-	isFunction: function( obj ) {
-		return jQuery.type(obj) === "function";
-	},
 
 
 
@@ -543,46 +379,7 @@ jQuery.extend({
 		return elem.nodeName && elem.nodeName.toUpperCase() === name.toUpperCase();
 	},
 
-	// args is for internal usage only
-	each: function( object, callback, args ) {
-		var name, i = 0,
-			length = object.length,
-			isObj = length === undefined || jQuery.isFunction( object );
 
-		if ( args ) {
-			if ( isObj ) {
-				for ( name in object ) {
-					if ( callback.apply( object[ name ], args ) === false ) {
-						break;
-					}
-				}
-			} else {
-				for ( ; i < length; ) {
-					if ( callback.apply( object[ i++ ], args ) === false ) {
-						break;
-					}
-				}
-			}
-
-		// A special, fast, case for the most common use of each
-		} else {
-			if ( isObj ) {
-				for ( name in object ) {
-					if ( callback.call( object[ name ], name, object[ name ] ) === false ) {
-						break;
-					}
-				}
-			} else {
-				for ( ; i < length; ) {
-					if ( callback.call( object[ i ], i, object[ i++ ] ) === false ) {
-						break;
-					}
-				}
-			}
-		}
-
-		return object;
-	},
 
 	// Use native String.trim function wherever possible
 	trim: trim ?
@@ -789,25 +586,7 @@ if ( document.addEventListener ) {
 	};
 }
 
-// The DOM ready check for Internet Explorer
-function doScrollCheck() {
-	if ( jQuery.isReady ) {
-		return;
-	}
 
-	try {
-		// If IE is used, use the trick by Diego Perini
-		// http://javascript.nwbox.com/IEContentLoaded/
-		document.documentElement.doScroll("left");
-	} catch(e) {
-		setTimeout( doScrollCheck, 1 );
-		return;
-	}
-
-	// and execute any waiting functions
-	jQuery.ready();
-}
-console.log(jQuery);
 
 return jQuery;
 });
