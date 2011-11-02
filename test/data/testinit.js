@@ -1,4 +1,4 @@
-var jQuery = this.jQuery || "jQuery", // For testing .noConflict()
+var jQuery = this.jQuery || { holdReady: function(){}, fake: "jQuery"}, // For testing .noConflict()
 	$ = this.$ || "$",
 	originaljQuery = jQuery,
 	original$ = $,
@@ -7,6 +7,7 @@ var jQuery = this.jQuery || "jQuery", // For testing .noConflict()
 /**
  * Set up a mock AMD define function for testing AMD registration.
  */
+ /*
 function define(name, dependencies, callback) {
 	amdDefined = callback();
 }
@@ -14,6 +15,7 @@ function define(name, dependencies, callback) {
 define.amd = {
 	jQuery: true
 };
+*/
 
 /**
  * Returns an array of elements with the given IDs, eg.
