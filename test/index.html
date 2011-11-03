@@ -71,13 +71,22 @@
 			'jquery/fn/slice',
 			'jquery/fn/sort',
 			'jquery/fn/splice',
-			'jquery/fn/toArray'
+			'jquery/fn/toArray',
+
+			/* deferred */
+			'jquery/deferred',
+			'jquery/deferred/when',
+
+			/* support */
+			'jquery/support',
+
+			//'jquery/core/boxModel'
 	  ],function() {
   		window.jQuery = jQ;
 	  		require([
 		    //'order!../src/jquery/callbacks.js',
-		    'order!../src/jquery/deferred.js',
-		    'order!../src/jquery/support.js',
+		    //'order!../src/jquery/deferred.js',
+		    //'order!../src/jquery/support.js',
 		    'order!../src/jquery/data.js',
 		    'order!../src/jquery/queue.js',
 		    'order!../src/jquery/attributes.js',
@@ -102,10 +111,10 @@
 			  	'order!qunit/qunit/qunit.js',
 			  	'order!data/testrunner.js',
 			  	'order!unit/core.js',
-			  	/*'order!unit/support.js',
+			  	'order!unit/support.js',
 			  	'order!unit/callbacks.js',
 			  	'order!unit/deferred.js',
-			  	'order!unit/data.js',
+			  	/*'order!unit/data.js',
 			  	'order!unit/queue.js',
 			  	'order!unit/attributes.js',
 			  	'order!unit/event.js',

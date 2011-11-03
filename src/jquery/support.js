@@ -1,6 +1,10 @@
-(function( jQuery ) {
+define('jquery/support', [
+	'jquery/core',
+	'jquery/core/extend',
+	'jquery/fn/ready'
+], function( jQuery ) {
 
-jQuery.support = (function() {
+return jQuery.support = (function() {
 
 	var div = document.createElement( "div" ),
 		documentElement = document.documentElement,
@@ -318,8 +322,4 @@ jQuery.support = (function() {
 
 	return support;
 })();
-
-// Keep track of boxModel
-jQuery.boxModel = jQuery.support.boxModel;
-
-})( jQuery );
+});
