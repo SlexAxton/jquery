@@ -15,29 +15,114 @@
   </script>
 
   <script>
-  define('jquery', [
-    'jquery/core',
-    /*'jquery/callbacks',
-    'jquery/deferred',
-    'jquery/support',
-    'jquery/data',
-    'jquery/queue',
-    'jquery/attributes',
-    'jquery/event',
-    'jquery/sizzle/sizzle',
-    'jquery/sizzle-jquery',
-    'jquery/traversing',
-    'jquery/manipulation',
-    'jquery/css',
-    'jquery/ajax',
-    'jquery/ajax/jsonp',
-    'jquery/ajax/script',
-    'jquery/ajax/xhr',
-    'jquery/effects',
-    'jquery/offset',
-    'jquery/dimensions'*/
-  ], function(jQ /*,... don't grab the rest. */){
-  	window.jQuery = window.$frames = jQ;
+  define('jQuery',[
+    'jquery/core'
+  ], function(jQ){
+  	require([
+  		/* ALL */
+
+			/* core */
+
+			'jquery/core/access',
+			'jquery/core/bindReady',
+			'jquery/core/browser',
+			'jquery/core/camelCase',
+			'jquery/core/class2type',
+			'jquery/core/error',
+			'jquery/core/globalEval',
+			'jquery/core/grep',
+			'jquery/core/holdReady',
+			'jquery/core/inArray',
+			'jquery/core/isEmptyObject',
+			'jquery/core/isNumeric',
+			'jquery/core/isReady',
+			'jquery/core/makeArray',
+			'jquery/core/map',
+			'jquery/core/merge',
+			'jquery/core/noConflict',
+			'jquery/core/nodeName',
+			'jquery/core/noop',
+			'jquery/core/now',
+			'jquery/core/parseJSON',
+			'jquery/core/parseXML',
+			'jquery/core/proxy',
+			'jquery/core/ready',
+			'jquery/core/readyList',
+			'jquery/core/readyWait',
+			'jquery/core/sub',
+			'jquery/core/trim',
+			'jquery/core/type',
+			'jquery/core/uaMatch',
+
+
+
+			/* fn */
+			'jquery/fn/each',
+			'jquery/fn/end',
+			'jquery/fn/eq',
+			'jquery/fn/first',
+			'jquery/fn/get',
+			'jquery/fn/last',
+			'jquery/fn/map',
+			'jquery/fn/push',
+			'jquery/fn/pushStack',
+			'jquery/fn/ready',
+			'jquery/fn/size',
+			'jquery/fn/slice',
+			'jquery/fn/sort',
+			'jquery/fn/splice',
+			'jquery/fn/toArray'
+	  ],function() {
+  		window.jQuery = jQ;
+	  		require([
+		    //'order!../src/jquery/callbacks.js',
+		    'order!../src/jquery/deferred.js',
+		    'order!../src/jquery/support.js',
+		    'order!../src/jquery/data.js',
+		    'order!../src/jquery/queue.js',
+		    'order!../src/jquery/attributes.js',
+		    'order!../src/jquery/event.js',
+		    'order!../src/jquery/sizzle/sizzle.js',
+		    'order!../src/jquery/sizzle-jquery.js',
+		    'order!../src/jquery/traversing.js',
+		    'order!../src/jquery/manipulation.js',
+		    'order!../src/jquery/css.js',
+		    'order!../src/jquery/ajax.js',
+		    'order!../src/jquery/ajax/jsonp.js',
+		    'order!../src/jquery/ajax/script.js',
+		    'order!../src/jquery/ajax/xhr.js',
+		    'order!../src/jquery/effects.js',
+		    'order!../src/jquery/offset.js',
+		    'order!../src/jquery/dimensions.js'
+		  ], function () {
+		  	console.log('jQuery loaded')
+
+		  	require([
+			  	'order!data/versioncheck.js',
+			  	'order!qunit/qunit/qunit.js',
+			  	'order!data/testrunner.js',
+			  	'order!unit/core.js',
+			  	/*'order!unit/support.js',
+			  	'order!unit/callbacks.js',
+			  	'order!unit/deferred.js',
+			  	'order!unit/data.js',
+			  	'order!unit/queue.js',
+			  	'order!unit/attributes.js',
+			  	'order!unit/event.js',
+			  	'order!../src/jquery/sizzle/test/unit/selector.js',
+			  	'order!unit/selector.js',
+			  	'order!unit/traversing.js',
+			  	'order!unit/manipulation.js',
+			  	'order!unit/css.js',
+			  	'order!unit/ajax.js',
+			  	'order!unit/effects.js',
+			  	'order!unit/offset.js',
+			  	'order!unit/dimensions.js'*/
+			  ], function(){
+		  		console.log('all scripts loaded')
+		  	});
+		  });
+  	});
   });
   </script>
 

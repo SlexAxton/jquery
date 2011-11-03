@@ -8,4 +8,4 @@ define('jquery/fn/ready', ['jquery/core', 'jquery/core/bindReady', 'jquery/core/
 
     return this;
   };
-};
+});

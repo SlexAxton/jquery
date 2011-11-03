@@ -1,5 +1,6 @@
-define('jquery/core/isArray', ['jquery/core', 'jquery/core/type'], function(jQuery, jQuery_type){
-  return jQuery.isArray = Array.isArray || function( obj ) {
-    return jQuery_type(obj) === "array";
+define('jquery/core/isArray', ['jquery/core/type'], function(type){
+  // jQuery.isArray = done in core.js
+  return Array.isArray || function( obj ) {
+    return type(obj) === "array";
   };
 });

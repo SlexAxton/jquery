@@ -5,4 +5,4 @@ define('jquery/fn/each', ['jquery/core', 'jquery/core/each'], function (jQuery) 
   return jQuery.fn.each = function( callback, args ) {
     return jQuery.each( this, callback, args );
   };
-};
+});

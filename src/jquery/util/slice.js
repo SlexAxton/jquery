@@ -1,1 +1,3 @@
-define('jquery/util/slice', Array.prototype.slice);
+define('jquery/util/slice', function(){
+  return Array.prototype.slice;
+});

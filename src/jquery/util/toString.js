@@ -1,1 +1,3 @@
-define('jquery/util/toString', Object.prototype.toString);
+define('jquery/util/toString', function(){
+  return Object.prototype.toString;
+});

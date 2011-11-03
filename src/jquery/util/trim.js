@@ -1,1 +1,3 @@
-define('jquery/util/trim', String.prototype.trim);
+define('jquery/util/trim', function () {
+  return String.prototype.trim;
+});

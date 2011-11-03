@@ -1,1 +1,3 @@
-define('jquery/util/indexOf', Array.prototype.indexOf);
+define('jquery/util/indexOf', function(){
+  return Array.prototype.indexOf;
+});

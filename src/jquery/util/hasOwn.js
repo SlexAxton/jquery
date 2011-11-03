@@ -1,1 +1,3 @@
-define('jquery/util/hasOwn', Object.prototype.hasOwnProperty);
+define('jquery/util/hasOwn', function(){
+  return Object.prototype.hasOwnProperty;
+});

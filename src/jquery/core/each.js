@@ -1,9 +1,10 @@
-define('jquery/core/each', ['jquery/core', 'jquery/core/isFunction'], function (jQuery) {
+define('jquery/core/each', ['jquery/core/isFunction'], function (isFunction) {
   // args is for internal usage only
-  return jQuery.each = function( object, callback, args ) {
+  //  jQuery.each = done in core.js
+  return function( object, callback, args ) {
     var name, i = 0,
       length = object.length,
-      isObj = length === undefined || jQuery.isFunction( object );
+      isObj = length === undefined || isFunction( object );
 
     if ( args ) {
       if ( isObj ) {

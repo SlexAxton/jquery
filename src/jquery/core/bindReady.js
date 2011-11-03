@@ -1,10 +1,11 @@
 define('jquery/core/bindReady', [
   'jquery/core',
   'jquery/util/doScrollCheck',
+  'jquery/core/DOMContentLoaded',
   'jQuery/core/readyList',
   'jquery/callbacks',
   'jquery/core/ready'
-], function (jQuery, doScrollCheck) {
+], function (jQuery, doScrollCheck, DOMContentLoaded) {
   return jQuery.bindReady = function() {
     if ( jQuery.readyList ) {
       return;

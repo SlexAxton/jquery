@@ -2,7 +2,7 @@ var jQuery = this.jQuery || { holdReady: function(){}, fake: "jQuery"}, // For t
 	$ = this.$ || "$",
 	originaljQuery = jQuery,
 	original$ = $,
-	amdDefined;
+	amdDefined = true;
 
 /**
  * Set up a mock AMD define function for testing AMD registration.

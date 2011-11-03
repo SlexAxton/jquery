@@ -1,1 +1,3 @@
-define('jquery/util/push', Array.prototype.push);
+define('jquery/util/push', function () {
+  return Array.prototype.push;
+});

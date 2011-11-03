@@ -2,9 +2,7 @@ define('jquery/core/ready', [
   'jquery/core',
   'jquery/core/readyWait',
   'jquery/core/readyList',
-  'jquery/core/isReady',
-  'jquery/fn/trigger', // TODO:: since it checks for this, do we need it?
-  'jquery/fn/unbind'
+  'jquery/core/isReady'
 ], function (jQuery) {
   // Handle when the DOM is ready
   return jQuery.ready = function( wait ) {
